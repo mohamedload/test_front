@@ -1,4 +1,4 @@
 # an-kai
-its a shit thing we dont know any shit
+test some experience in some frontend
 
 #project note 
