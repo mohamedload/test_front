@@ -1,28 +1,24 @@
-const menuButton = document.querySelector('.menu-toggle');
-const nav = document.querySelector('.nav-links');
+// دالة للبحث الوهمي
+function searchProperties() {
+    alert('جاري البحث عن الوحدات السكنية المطلوبة...');
+}
 
-menuButton.addEventListener('click', () => {
-  const isOpen = nav.classList.toggle('open');
-  menuButton.setAttribute('aria-expanded', String(isOpen));
-  menuButton.textContent = isOpen ? '✕' : '☰';
+// دالة لإرسال نموذج التواصل
+function submitForm(event) {
+    event.preventDefault(); // منع إعادة تحميل الصفحة
+    alert('تم إرسال طلبك بنجاح! سيتواصل معك أحد مندوبينا قريباً.');
+    event.target.reset(); // تفريغ الحقول بعد الإرسال
+}
+
+// تفعيل التمرير السلس للروابط في شريط التنقل
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetElement = document.querySelector(this.getAttribute('href'));
+        if (targetElement) {
+            targetElement.scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+    });
 });
-
-document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', () => {
-    nav.classList.remove('open');
-    menuButton.setAttribute('aria-expanded', 'false');
-    menuButton.textContent = '☰';
-  });
-});
-
-// Reveal sections smoothly as they enter the viewport.
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12 });
-
-document.querySelectorAll('.reveal').forEach(element => observer.observe(element));

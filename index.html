@@ -1,83 +1,163 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="NOVA — A creative digital studio building bold digital experiences." />
-  <title>NOVA — Digital Studio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
-  <script src="script.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPNU Key Housing - تأجير سكن جامعي</title>
+    <!-- مكتبة Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- أيقونات FontAwesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- ملف CSS الخارجي -->
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <div class="background-glow glow-one"></div>
-  <div class="background-glow glow-two"></div>
-  <header class="site-header">
-    <a class="logo" href="#home"><span class="logo-mark">N</span> NOVA<span class="dot">.</span></a>
-    <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
-    <nav class="nav-links">
-      <a href="#home" class="active">Home</a>
-      <a href="#services">Services</a>
-      <a href="#work">Our work</a>
-      <a href="#about">About</a>
+<body class="bg-gray-50 flex flex-col min-h-screen">
+
+    <!-- شريط التنقل -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-2 text-blue-700">
+                    <i class="fa-solid fa-house-chimney text-2xl"></i>
+                    <span class="font-bold text-xl tracking-wide">EPNU Key Housing</span>
+                </div>
+                <div class="hidden md:flex space-x-8 space-x-reverse">
+                    <a href="#home" class="text-gray-700 hover:text-blue-700 font-semibold transition">الرئيسية</a>
+                    <a href="#properties" class="text-gray-700 hover:text-blue-700 font-semibold transition">الوحدات السكنية</a>
+                    <a href="#contact" class="text-gray-700 hover:text-blue-700 font-semibold transition">تواصل معنا</a>
+                </div>
+                <div>
+                    <button class="bg-blue-700 text-white px-5 py-2 rounded-lg hover:bg-blue-800 transition shadow">تسجيل الدخول</button>
+                </div>
+            </div>
+        </div>
     </nav>
-    <a class="header-cta" href="#contact">Let's talk <span>↗</span></a>
-  </header>
 
-  <main>
-    <section class="hero section" id="home">
-      <div class="hero-copy reveal">
-        <div class="eyebrow"><span class="status-dot"></span> INDEPENDENT DIGITAL STUDIO</div>
-        <h1>Ideas into<br><span class="gradient-text">impact.</span></h1>
-        <p class="hero-description">We create thoughtful digital experiences that help ambitious brands move forward. Strategy, design, and technology — all in one place.</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="#work">Explore our work <span>↗</span></a>
-          <a class="text-link" href="#about">Get to know us <span>→</span></a>
+    <!-- القسم الرئيسي -->
+    <header id="home" class="hero-bg h-[500px] flex items-center justify-center text-center px-4">
+        <div class="text-white max-w-3xl">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">سكنك الجامعي المثالي بالقرب من جامعة شرق بورسعيد الأهلية</h1>
+            <p class="text-lg md:text-xl mb-8 text-gray-200">نوفر لك خيارات سكن آمنة، مريحة، ومجهزة بالكامل لتناسب احتياجاتك الدراسية.</p>
+            
+            <div class="bg-white p-4 rounded-xl shadow-lg flex flex-col md:flex-row gap-4">
+                <input type="text" placeholder="المنطقة أو الحي..." class="flex-1 p-3 border border-gray-300 rounded-lg text-gray-800 focus:outline-none focus:border-blue-500">
+                <select class="flex-1 p-3 border border-gray-300 rounded-lg text-gray-800 focus:outline-none focus:border-blue-500">
+                    <option value="">نوع السكن</option>
+                    <option value="single">غرفة فردية</option>
+                    <option value="shared">غرفة مشتركة</option>
+                    <option value="apartment">شقة كاملة</option>
+                </select>
+                <button onclick="searchProperties()" class="bg-blue-700 text-white px-8 py-3 rounded-lg hover:bg-blue-800 transition font-bold flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-magnifying-glass"></i> بحث
+                </button>
+            </div>
         </div>
-        <div class="hero-meta">
-          <div class="avatar-stack"><span>J</span><span>M</span><span>A</span><span>+</span></div>
-          <div><strong>Small team. Big ideas.</strong><small>Built for what's next.</small></div>
+    </header>
+
+    <!-- قسم الوحدات السكنية -->
+    <section id="properties" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex-grow">
+        <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">أحدث الوحدات المتاحة</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                <img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="غرفة فردية" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">غرفة فردية ممتازة</h3>
+                        <span class="bg-green-100 text-green-800 text-sm font-semibold px-3 py-1 rounded-full">متاح</span>
+                    </div>
+                    <p class="text-gray-600 mb-4"><i class="fa-solid fa-location-dot text-blue-500 ml-1"></i> مدينة سلام، بورسعيد</p>
+                    <div class="flex justify-between items-center border-t pt-4">
+                        <span class="text-2xl font-bold text-blue-700">1,500 <span class="text-sm text-gray-500 font-normal">ج.م / شهر</span></span>
+                        <button class="text-blue-700 font-semibold hover:text-blue-900">التفاصيل <i class="fa-solid fa-arrow-left text-sm"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                <img src="https://images.unsplash.com/photo-1522771731470-ea433733b580?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="غرفة مشتركة" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">غرفة مشتركة (طالبين)</h3>
+                        <span class="bg-green-100 text-green-800 text-sm font-semibold px-3 py-1 rounded-full">متاح</span>
+                    </div>
+                    <p class="text-gray-600 mb-4"><i class="fa-solid fa-location-dot text-blue-500 ml-1"></i> حي الشرق، بورسعيد</p>
+                    <div class="flex justify-between items-center border-t pt-4">
+                        <span class="text-2xl font-bold text-blue-700">900 <span class="text-sm text-gray-500 font-normal">ج.م / شهر</span></span>
+                        <button class="text-blue-700 font-semibold hover:text-blue-900">التفاصيل <i class="fa-solid fa-arrow-left text-sm"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                <img src="https://images.unsplash.com/photo-1502672260266-1c1e5250adfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="شقة كاملة" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">شقة مفروشة بالكامل</h3>
+                        <span class="bg-red-100 text-red-800 text-sm font-semibold px-3 py-1 rounded-full">محجوز</span>
+                    </div>
+                    <p class="text-gray-600 mb-4"><i class="fa-solid fa-location-dot text-blue-500 ml-1"></i> بورفؤاد</p>
+                    <div class="flex justify-between items-center border-t pt-4">
+                        <span class="text-2xl font-bold text-blue-700">4,000 <span class="text-sm text-gray-500 font-normal">ج.م / شهر</span></span>
+                        <button class="text-gray-400 font-semibold cursor-not-allowed" disabled>التفاصيل <i class="fa-solid fa-arrow-left text-sm"></i></button>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="hero-art reveal">
-        <div class="art-orbit orbit-a"></div><div class="art-orbit orbit-b"></div>
-        <div class="art-core"><span>N</span></div>
-        <div class="floating-card card-top"><span class="mini-icon">✳</span><div><b>Design</b><small>Made with purpose</small></div></div>
-        <div class="floating-card card-bottom"><span class="mini-icon purple">⌘</span><div><b>Technology</b><small>Built to perform</small></div></div>
-        <div class="art-caption">CREATIVITY MEETS CLARITY <span>✦</span></div>
-      </div>
     </section>
 
-    <section class="metrics section reveal">
-      <div><strong>04<span>+</span></strong><small>Years creating</small></div>
-      <div><strong>32</strong><small>Projects delivered</small></div>
-      <div><strong>18</strong><small>Happy clients</small></div>
-      <div><strong>∞</strong><small>Ideas in progress</small></div>
+    <!-- قسم التواصل -->
+    <section id="contact" class="bg-blue-50 py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-2xl shadow-lg p-8 md:p-12">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">هل تبحث عن سكن بمواصفات خاصة؟</h2>
+                    <p class="text-gray-600">تواصل معنا وسنقوم بمساعدتك في إيجاد السكن المناسب لك.</p>
+                </div>
+                <form onsubmit="submitForm(event)" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">الاسم بالكامل</label>
+                            <input type="text" required class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">رقم الهاتف</label>
+                            <input type="tel" required class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">نوع السكن المطلوب والكلية</label>
+                        <textarea rows="4" required class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-blue-700 text-white font-bold py-4 rounded-lg hover:bg-blue-800 transition shadow-lg text-lg">
+                        إرسال الطلب
+                    </button>
+                </form>
+            </div>
+        </div>
     </section>
 
-    <section class="section services" id="services">
-      <div class="section-heading reveal"><div><div class="eyebrow">WHAT WE DO</div><h2>Good work starts<br>with <span class="gradient-text">good thinking.</span></h2></div><p>From the first sketch to the final launch, we turn complex challenges into simple, useful experiences.</p></div>
-      <div class="service-grid">
-        <article class="service-card reveal"><span class="service-number">01 /</span><div class="service-icon">✳</div><h3>Brand identity</h3><p>Distinctive visual systems that make your brand impossible to ignore.</p><a href="#contact">Explore service <span>↗</span></a></article>
-        <article class="service-card reveal"><span class="service-number">02 /</span><div class="service-icon">▧</div><h3>Web design</h3><p>Beautiful, intuitive interfaces designed around real people and goals.</p><a href="#contact">Explore service <span>↗</span></a></article>
-        <article class="service-card reveal"><span class="service-number">03 /</span><div class="service-icon">⌘</div><h3>Development</h3><p>Fast, accessible, responsive websites built with care and precision.</p><a href="#contact">Explore service <span>↗</span></a></article>
-      </div>
-    </section>
+    <!-- الفوتر -->
+    <footer class="bg-gray-900 text-gray-300 py-12 text-center">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-center gap-2 text-white mb-6">
+                <i class="fa-solid fa-house-chimney text-3xl text-blue-500"></i>
+                <span class="font-bold text-2xl">EPNU Key Housing</span>
+            </div>
+            <p class="mb-6">المنصة الأولى لطلاب جامعة شرق بورسعيد الأهلية لإيجاد السكن المناسب.</p>
+            <div class="flex justify-center gap-6 mb-8">
+                <a href="#" class="text-gray-400 hover:text-white text-xl transition"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white text-xl transition"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white text-xl transition"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white text-xl transition"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+            <div class="border-t border-gray-700 pt-8 text-sm">
+                <p>&copy; 2026 EPNU Key Housing. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
 
-    <section class="section work" id="work">
-      <div class="section-heading reveal"><div><div class="eyebrow">SELECTED PROJECTS</div><h2>A little bit of<br><span class="gradient-text">what we do.</span></h2></div><a class="text-link" href="#contact">Have a project in mind? <span>↗</span></a></div>
-      <div class="project-grid">
-        <article class="project-card project-large reveal"><div class="project-visual visual-one"><div class="mock-window"><div class="mock-bar"><i></i><i></i><i></i></div><div class="mock-content"><span>FORM / 01</span><b>Shape<br>the future.</b><div class="mock-pill">Discover more ↗</div></div></div></div><div class="project-info"><div><h3>FORM — Brand & digital</h3><p>Brand strategy · Website · 2025</p></div><span class="project-arrow">↗</span></div></article>
-        <article class="project-card reveal"><div class="project-visual visual-two"><div class="sphere"></div><span class="visual-label">LESS, BUT BETTER.</span></div><div class="project-info"><div><h3>MONO — E-commerce</h3><p>Art direction · Development · 2025</p></div><span class="project-arrow">↗</span></div></article>
-      </div>
-    </section>
-
-    <section class="about-band section reveal" id="about"><div class="about-symbol">✳</div><div><div class="eyebrow">A DIFFERENT KIND OF STUDIO</div><h2>Curious minds.<br>Meaningful work.</h2><p>We believe the best digital experiences happen when sharp thinking meets fearless creativity. No noise, no unnecessary complexity — just work that matters.</p><a class="button button-light" href="#contact">More about NOVA <span>↗</span></a></div></section>
-
-    <section class="contact section" id="contact"><div class="eyebrow reveal">HAVE A GOOD ONE IN MIND?</div><h2 class="reveal">Let's make<br><span class="gradient-text">it happen.</span></h2><div class="contact-bottom reveal"><p>Tell us what you're dreaming up. We'd love to hear about it.</p><a class="button button-primary" href="mailto:hello@nova.studio">hello@nova.studio <span>↗</span></a></div></section>
-  </main>
-  <footer><a class="logo" href="#home"><span class="logo-mark">N</span> NOVA<span class="dot">.</span></a><span>© 2025 NOVA Studio. Made with intention.</span><a href="#home">Back to top ↑</a></footer>
+    <!-- ملف JavaScript الخارجي -->
+    <script src="script.js"></script>
 </body>
 </html>
